@@ -8,7 +8,7 @@ CREATE DATABASE traveldb;
 \c traveldb;
 
 -- Create the travelplaces table
-CREATE TABLE public.travelplaces (
+CREATE TABLE travelplaces (
     id SERIAL PRIMARY KEY,
     country VARCHAR(255),
     city VARCHAR(255),
@@ -16,9 +16,9 @@ CREATE TABLE public.travelplaces (
 );
 
 -- Insert data into the travelplaces table
-INSERT INTO public.travelplaces (id, country, city, mustsee)
+INSERT INTO travelplaces (id, country, city, mustsee)
 VALUES
-    (1, 'Armenia', 'Yerevan', 'Cascade'),
-    (2, 'Italy', 'Rome', 'Vatican'),
-    (3, 'Spain', 'Barcelona', 'Sagrada Familia');
+(1, 'Armenia', 'Yerevan', 'Cascade'),
+(2, 'Italy', 'Rome', 'Vatican'),
+(3, 'Spain', 'Barcelona', 'Sagrada Familia');
 

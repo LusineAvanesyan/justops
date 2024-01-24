@@ -1,7 +1,7 @@
 // Function to fetch data from the API
 async function fetchData() {
     try {
-        const response = await fetch('http://127.0.0.1:5000/travelner');
+        const response = await fetch('http://127.0.0.1:5000/places');
         const data = await response.json();
         return data;
     } catch (error) {
@@ -30,9 +30,9 @@ console.log(travelPlaces);
     travelPlaces.forEach(place => {
         tableHtml += `
             <tr>
-                <td>${place.country}</td>
-                <td>${place.city}</td>
-                <td>${place.must_see_places}</td>
+                <td>${place[1]}</td>
+                <td>${place[2]}</td>
+                <td>${place[3]}</td>
             </tr>`;
     });
 

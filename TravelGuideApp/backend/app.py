@@ -1,18 +1,10 @@
 from flask import Flask, jsonify
-from travel_place import TravelPlace
+import psycopg2
 
-shokolad = Flask(__name__)
-
-# Sample data
-places_data = [
-    TravelPlace("Armenia", "Yerevan", "Cascade"),
-    TravelPlace("Italy", "Rome", "Vatican"),
-    TravelPlace("Spain", "Barcelona", "Sagrada Familia")
-]
-
+app = Flask(__name__)
 
 # Enable CORS for all routes
-@shokolad.after_request
+@app.after_request
 def after_request(response):
     response.headers.add('Access-Control-Allow-Origin', '*')
     response.headers.add('Access-Control-Allow-Methods', 'GET,PUT')
@@ -20,11 +12,28 @@ def after_request(response):
 
 
 # API endpoint for getting travel places
-@shokolad.route('/travelner', methods=['GET'])
+@app.route('/places', methods=['GET'])
 def get_travel_places():
- travel_places = [place.to_my_json() for place in places_data]
- return jsonify(travel_places)
+  conn = psycopg2.connect(database = "traveldb", 
+                        user = "postgres", 
+                        host= 'localhost',
+                        password = "postgres",
+                        port = 5432)   
+  
+  # Open a cursor to perform database operations
+  cur = conn.cursor()
+  # Execute a command: 
+  cur.execute('SELECT * FROM travelplaces;')
+  rows = cur.fetchall()
+  
+  # Make the changes to the database persistent
+  conn.commit()
+  # Close cursor and communication with the database
+  cur.close()
+  conn.close()    
+   
+  return jsonify(rows)
 
 
 if __name__ == '__main__':
-    shokolad.run(debug=True)
+    app.run(debug=True, port=5000)
