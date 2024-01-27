@@ -25,3 +25,4 @@ psql
 # shows all existing databases
 \l
 
+End.
