@@ -1,5 +1,5 @@
 from flask import Flask, jsonify
-import psycopg2
+import traveldb
 
 app = Flask(__name__)
 
@@ -13,26 +13,9 @@ def after_request(response):
 
 # API endpoint for getting travel places
 @app.route('/places', methods=['GET'])
-def get_travel_places():
-  conn = psycopg2.connect(database = "traveldb", 
-                        user = "postgres", 
-                        host= 'localhost',
-                        password = "postgres",
-                        port = 5432)   
-  
-  # Open a cursor to perform database operations
-  cur = conn.cursor()
-  # Execute a command: 
-  cur.execute('SELECT * FROM travelplaces;')
-  rows = cur.fetchall()
-  
-  # Make the changes to the database persistent
-  conn.commit()
-  # Close cursor and communication with the database
-  cur.close()
-  conn.close()    
-   
-  return jsonify(rows)
+def get_content():
+  data = traveldb.get_travel_places()
+  return jsonify(data)
 
 
 if __name__ == '__main__':

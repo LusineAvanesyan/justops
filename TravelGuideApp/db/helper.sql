@@ -7,16 +7,15 @@ CREATE DATABASE traveldb;
 -- Connect to the database
 \c traveldb;
 
--- Create the travelplaces table
-CREATE TABLE travelplaces (
-    id SERIAL PRIMARY KEY,
-    country VARCHAR(255),
-    city VARCHAR(255),
-    mustsee VARCHAR(255)
-);
+-- Create the places table
+CREATE TABLE places (
+id SERIAL PRIMARY KEY,
+country VARCHAR(255),
+city VARCHAR(255),
+mustsee VARCHAR(255));
 
--- Insert data into the travelplaces table
-INSERT INTO travelplaces (id, country, city, mustsee)
+-- Insert data into the places table
+INSERT INTO places (id, country, city, mustsee)
 VALUES
 (1, 'Armenia', 'Yerevan', 'Cascade'),
 (2, 'Italy', 'Rome', 'Vatican'),

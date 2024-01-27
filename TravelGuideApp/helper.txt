@@ -12,8 +12,6 @@ psql traveldb;
 exit
 
 
-
-
 alter user postgres password 'postgres';
 
 systemctl restart postgresql
@@ -23,5 +21,3 @@ psql
 
 # shows all existing databases
 \l
-
- barev
