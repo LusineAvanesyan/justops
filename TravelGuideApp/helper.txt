@@ -1,4 +1,5 @@
 Postqresql
+
 # enter into postres server from ubuntu
 sudo -i -u postgres
 
