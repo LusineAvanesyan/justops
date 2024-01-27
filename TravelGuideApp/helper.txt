@@ -1,0 +1,26 @@
+Postqresql
+# enter into postres server from ubuntu
+sudo -i -u postgres
+
+# enter into the traveldb database in postgresql server
+psql traveldb;
+
+# exit database
+\q
+
+# exit postgresql server
+exit
+
+
+
+
+alter user postgres password 'postgres';
+
+systemctl restart postgresql
+
+# enters 
+psql
+
+# shows all existing databases
+\l
+
