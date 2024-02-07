@@ -10,6 +10,10 @@ def after_request(response):
     response.headers.add('Access-Control-Allow-Methods', 'GET,PUT')
     return response
 
+# For testing
+@app.route("/barev") 
+def indexapp():
+  return "Barev vonc es"
 
 # API endpoint for getting travel places
 @app.route('/places', methods=['GET'])
@@ -19,4 +23,4 @@ def get_content():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(debug=True, host='0.0.0.0')
